@@ -1,3 +1,4 @@
+import java.util.*;
 import java.sql.*;
 
 public class App {
@@ -13,19 +14,19 @@ public class App {
             Statement stmt = conn.createStatement();
             // String query = "CREATE DATABASE IF NOT EXISTS " + dbname;
             // stmt.executeUpdate(query);
- String createTable = "CREATE TABLE IF NOT EXISTS newone ("
-                    + "id INT PRIMARY KEY AUTO_INCREMENT, "
-                    + "name VARCHAR(100), "
-                    + "age INT, "
-                    + "mark INT, "
-                    + "course_id INT)";
-            stmt.executeUpdate(createTable);
-            System.out.println("Table created successfully");
+//  String createTable = "CREATE TABLE IF NOT EXISTS newone ("
+//                     + "id INT PRIMARY KEY AUTO_INCREMENT, "
+//                     + "name VARCHAR(100), "
+//                     + "age INT, "
+//                     + "mark INT, "
+//                     + "course_id INT)";
+//             stmt.executeUpdate(createTable);
+            // System.out.println("Table created successfully");
             String InsertQuery = ("insert into detail values(?,?,?,?,?)");
             PreparedStatement stmts = conn.prepareStatement(InsertQuery);
-            stmts.setInt(1,1991);
-            stmts.setString(2, "Moulee");
-            stmts.setInt(3, 20);
+            stmts.setInt(1,121);
+            stmts.setString(2, "Dhanush");
+            stmts.setInt(3, 10);
             stmts.setInt(4, 90);
             stmts.setInt(5,100);
             int rowInserted = stmts.executeUpdate();
@@ -34,7 +35,7 @@ public class App {
             while(res.next()){
                 System.out.println(res.getInt("id")+"  "+res.getString("name")+"  "+res.getInt("course_id")+"  "+res.getInt("mark")+"  "+res.getInt("age")+"  ");
             }
-            // System.out.println("Database created or already exists.");\
+            // System.out.println("Database created or already exists.");
             stmt.close();
             stmts.close();
             conn.close();
