@@ -6,7 +6,7 @@ public class App {
         String url = "jdbc:mysql://localhost:3306/training";
         String username = "root";
         String password = "kalaipriyan0007"; 
-        // String dbname = "Newone";
+        String dbname = "Newone";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, username, password);
@@ -23,6 +23,8 @@ public class App {
 //             stmt.executeUpdate(createTable);
             // System.out.println("Table created successfully");
             String InsertQuery = ("insert into detail values(?,?,?,?,?)");
+            String DropQuery=("drop database "+dbname);
+            stmt.executeUpdate(DropQuery);
             PreparedStatement stmts = conn.prepareStatement(InsertQuery);
             stmts.setInt(1,121);
             stmts.setString(2, "Dhanush");
